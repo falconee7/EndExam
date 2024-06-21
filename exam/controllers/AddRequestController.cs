@@ -14,42 +14,77 @@ namespace exam.controllers
     public class AddRequestController
     {
 
-        public void AddNewRequest(long climateTechTypeId, string climateTechModel, string problemDescryption)
+        //public void AddNewRequest(long climateTechTypeId, string climateTechModel, string problemDescryption)
+        //{
+        //    if (climateTechModel == "")
+        //    {
+        //        throw new Exception("Ошибка. Модель не заполнена.");
+        //    }
+
+        //    if (problemDescryption == "")
+        //    {
+        //        throw new Exception("Ошибка. Описание проблемы не заполнено.");
+        //    }
+
+        //    try
+        //    {
+        //        Requests request = new Requests()
+        //        {
+        //            StartDate = DateTime.Now,
+        //            ClimateTechTypeId = climateTechTypeId,
+        //            ClimateTechModel = climateTechModel,
+        //            ProblemDescription = problemDescryption,
+        //            RequestStatusId = 1,
+        //            CompletionDate = null,
+        //            RepairParts = null,
+        //            MasterId = null,
+        //            ClientId = FrameNavigate.user.id,
+        //        };
+
+        //        DbConnection.Examentities.Requests.Add(request);
+        //        DbConnection.Examentities.SaveChanges();
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception("Ошибка соединения с БД");
+        //    }
+
+        //}
+
+        public void AddNewRequest(long climateTechTypeId, string climateTechModel, string problemDescrption)
         {
-            if (climateTechModel == "")
+            if(climateTechModel == "")
             {
-                throw new Exception("Ошибка. Модель не заполнена.");
+                throw new Exception("Поле модель не заполнено !");
             }
-
-            if (problemDescryption == "")
+            if(problemDescrption == "")
             {
-                throw new Exception("Ошибка. Описание проблемы не заполнено.");
+                throw new Exception("Поле модель не заполнено !");
             }
-
             try
             {
-                Requests request = new Requests()
-                {
-                    StartDate = DateTime.Now,
-                    ClimateTechTypeId = climateTechTypeId,
-                    ClimateTechModel = climateTechModel,
-                    ProblemDescription = problemDescryption,
-                    RequestStatusId = 1,
-                    CompletionDate = null,
-                    RepairParts = null,
-                    MasterId = null,
-                    ClientId = FrameNavigate.user.id,
-                };
-
-                DbConnection.Examentities.Requests.Add(request);
+            Requests requests = new Requests() 
+            {
+                StartDate = DateTime.Now,
+                ClimateTechTypeId = climateTechTypeId,
+                ClimateTechModel = climateTechModel,
+                ProblemDescription = problemDescrption,
+                RequestStatusId = 1,
+                CompletionDate = null,
+                RepairParts = null,
+                MasterId = null,
+                ClientId = FrameNavigate.user.id,
+            };
+                DbConnection.Examentities.Requests.Add(requests);
                 DbConnection.Examentities.SaveChanges();
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
+
                 throw new Exception("Ошибка соединения с БД");
             }
-
         }
     }
 }

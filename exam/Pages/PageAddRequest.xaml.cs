@@ -27,30 +27,53 @@ namespace exam.Pages
         public PageAddRequest()
         {
             InitializeComponent();
+            //_addrequestController = new AddRequestController();
+
+            //CmbClimateTechType.ItemsSource = DbConnection.Examentities.ClimateTechType.ToList();
+            //CmbClimateTechType.DisplayMemberPath = "Name";
+            //CmbClimateTechType.SelectedValuePath = "id";
+            //CmbClimateTechType.SelectedIndex = 0;
+            //_pageClient = new PageClient();
             _addrequestController = new AddRequestController();
+            _pageClient = new PageClient();
 
             CmbClimateTechType.ItemsSource = DbConnection.Examentities.ClimateTechType.ToList();
             CmbClimateTechType.DisplayMemberPath = "Name";
             CmbClimateTechType.SelectedValuePath = "id";
             CmbClimateTechType.SelectedIndex = 0;
-            _pageClient = new PageClient();
         }
 
         private void BtnAddRequest_Click(object sender, RoutedEventArgs e)
         {
+            //try
+            //{
+            //    long climateTechTypeId = (long)CmbClimateTechType.SelectedValue;
+            //    string climateTechModel = TxbClimateTechModel.Text;
+            //    string problemDescryption = TxbProblemDescription.Text;
+            //    _addrequestController.AddNewRequest(climateTechTypeId, climateTechModel, problemDescryption);
+            //    MessageBox.Show("Запрос успешно добавлен !", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            //    _pageClient.FillGridClientRequest();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message,"Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
             try
             {
-                long climateTechTypeId = (long)CmbClimateTechType.SelectedValue;
+                long climateTechTpeId = (long)CmbClimateTechType.SelectedValue;
                 string climateTechModel = TxbClimateTechModel.Text;
-                string problemDescryption = TxbProblemDescription.Text;
-                _addrequestController.AddNewRequest(climateTechTypeId, climateTechModel, problemDescryption);
-                MessageBox.Show("Запрос успешно добавлен !", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                string problemDescription = TxbProblemDescription.Text;
 
+                _addrequestController.AddNewRequest(climateTechTpeId, climateTechModel, problemDescription);
+                MessageBox.Show("Запрос успешно добавлен !", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 _pageClient.FillGridClientRequest();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

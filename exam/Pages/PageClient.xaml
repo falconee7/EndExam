@@ -10,7 +10,7 @@
 
     <Grid>
         <TextBlock FontSize="20" Text="Кабинет пользователя" HorizontalAlignment="Center"/>
-        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Content="Назад" Name="BtnBack" Click="BtnBack_Click"/>
+        <!--<Button HorizontalAlignment="Right" VerticalAlignment="Top" Content="Назад" Name="BtnBack" Click="BtnBack_Click"/>
         <DataGrid VerticalAlignment="Center" HorizontalAlignment="Center" Name="GridList" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Binding="{Binding id}"></DataGridTextColumn>
@@ -22,6 +22,28 @@
                     <DataGridTemplateColumn.CellTemplate>
                          <DataTemplate>
                             <Button Content="Редактировать"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>/>-->
+        <DataGrid Name="GridList" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата оформления" Binding="{Binding StartDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип оборудования" Binding="{Binding ClimateTechType.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Binding="{Binding RequestStatuses.Name}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnUpdate" Click="BtnUpdate_Click">Редактировать</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnDelete" Click="BtnDelete_Click">Удалить</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

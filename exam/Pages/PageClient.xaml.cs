@@ -24,7 +24,12 @@ namespace exam.Pages
         public PageClient()
         {
             InitializeComponent();
-            this.GridList.ItemsSource = DbConnection.Examentities.Requests.Where(r => r.ClientId == FrameNavigate.user.id).ToList();
+            //this.GridList.ItemsSource = DbConnection.Examentities.Requests.Where(r => r.ClientId == FrameNavigate.user.id).ToList();
+
+
+            this.GridList.ItemsSource = DbConnection.Examentities.Requests.Where(r=>r.ClientId == FrameNavigate.user.id).ToList();
+
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -39,6 +44,27 @@ namespace exam.Pages
         public void FillGridClientRequest()
         {
             this.GridList.ItemsSource = DbConnection.Examentities.Requests.Where(r => r.ClientId == FrameNavigate.user.id).ToList();
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridList.SelectedItem != null)
+            {
+                var requestToDelete = (Requests)GridList.SelectedItem;  
+
+                DbConnection.Examentities.Requests.Remove(requestToDelete);
+                DbConnection.Examentities.SaveChanges();
+                FillGridClientRequest();
+            }
+            else
+            {
+                MessageBox.Show("Выберите заказ для удаления.");
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
